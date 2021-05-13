@@ -6121,6 +6121,12 @@ public final class Settings {
         public static final String SWIPE_TO_SCREENSHOT = "swipe_to_screenshot";
 
         /**
+         * Whether auto brightness is applied one shot when screen is turned on
+         * @hide
+         */
+        public static final String AUTO_BRIGHTNESS_ONE_SHOT = "auto_brightness_one__shot";
+
+        /**
          * Whether the phone vibrates on call connect
          * @hide
          */
@@ -6497,6 +6503,7 @@ public final class Settings {
             PRIVATE_SETTINGS.add(FORCE_FULLSCREEN_CUTOUT_APPS);
             PRIVATE_SETTINGS.add(AMBIENT_NOTIFICATION_LIGHT);
             PRIVATE_SETTINGS.add(AMBIENT_NOTIFICATION_LIGHT_AUTOMATIC);
+            PRIVATE_SETTINGS.add(AUTO_BRIGHTNESS_ONE_SHOT);
         }
 
         /**
