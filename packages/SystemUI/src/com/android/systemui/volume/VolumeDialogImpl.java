@@ -1262,18 +1262,14 @@ public class VolumeDialogImpl implements VolumeDialog, Dumpable,
     }
 
     private void initSettingsH(int lockTaskModeState) {
-        if (mRoundedBorderBottom != null){
-            mRoundedBorderBottom.setVisibility(!mDeviceProvisionedController.isCurrentUserSetup() ||
-                    lockTaskModeState != LOCK_TASK_MODE_NONE
-                    ? VISIBLE : GONE);
+        final boolean showSettings = mDeviceProvisionedController.isCurrentUserSetup()
+                && lockTaskModeState == LOCK_TASK_MODE_NONE;
+        if (mRoundedBorderBottom != null) {
+            mRoundedBorderBottom.setVisibility(!showSettings ? VISIBLE : GONE);
         }
         if (mSettingsView != null) {
-            mSettingsView.setVisibility(
-                    mDeviceProvisionedController.isCurrentUserSetup() &&
-                            lockTaskModeState == LOCK_TASK_MODE_NONE &&
-                            Flags.useMediaRouter2ForInfoMediaManager()
-                            ? VISIBLE : GONE);
-        }
+            mSettingsView.setVisibility(showSettings ? VISIBLE : GONE);
+	}
         if (mSettingsIcon != null) {
             mSettingsIcon.setOnClickListener(v -> {
                 Events.writeEvent(Events.EVENT_SETTINGS_CLICK);
